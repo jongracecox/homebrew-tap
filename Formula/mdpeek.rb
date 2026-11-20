@@ -25,6 +25,33 @@ class Mdpeek < Formula
 
   test do
     assert_match version.to_s, shell_output("#{bin}/mdpeek --version")
-    assert_match "usage: mdpeek", shell_output("#{bin}/mdpeek --help")
+
+    (testpath/"guide.md").write <<~MARKDOWN
+      # Guide
+
+      Intro.
+
+      ## Setup
+
+      Install it.
+
+      ## Prices
+
+      | Item | Price |
+      |---|---|
+      | tea | 2.5 |
+      | cake | 4 |
+    MARKDOWN
+
+    outline = shell_output("#{bin}/mdpeek guide.md")
+    assert_match "[S1] Guide", outline
+    assert_match "[S1.2] Prices (4 lines, 1 table)", outline
+
+    section = shell_output("#{bin}/mdpeek guide.md -s S1.2")
+    assert_match "| tea | 2.5 |", section
+
+    sql = "select item from t1 where price > 3"
+    assert_equal "item\ncake\n",
+                 shell_output("#{bin}/mdpeek guide.md --engine sqlite --sql '#{sql}' --format csv")
   end
 end
