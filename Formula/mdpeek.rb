@@ -3,8 +3,8 @@ class Mdpeek < Formula
 
   desc "Progressive exposure for markdown: navigate large documents by section"
   homepage "https://github.com/jongracecox/mdpeek"
-  url "https://files.pythonhosted.org/packages/ac/fa/1748fae1345212c92901c93acaa0d049c7cb51e1a88b395e1007a6d08a0c/mdpeek-0.0.1.tar.gz"
-  sha256 "14f6916c55a1e18a1aeb370c1f9f89973275acc03512d2e3405d10981963b4fa"
+  url "https://files.pythonhosted.org/packages/21/fe/2efe2a419f499a1908d2afcd5459dca3776bf4d22c265dee7d907da2a226/mdpeek-0.1.0.tar.gz"
+  sha256 "4a3d43080b0d527f878258c62aa2da16f2a89d21cbb20be620a8a6a5f41fa5ca"
   license "MIT"
 
   depends_on "python@3.14"
