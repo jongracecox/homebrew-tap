@@ -45,7 +45,7 @@ class Mdpeek < Formula
 
     outline = shell_output("#{bin}/mdpeek guide.md")
     assert_match "[S1] Guide", outline
-    assert_match "[S1.2] Prices (4 lines, 1 table)", outline
+    assert_match "[S1.2] Prices (4 ln, 1 tbl)", outline
 
     section = shell_output("#{bin}/mdpeek guide.md -s S1.2")
     assert_match "| tea | 2.5 |", section
