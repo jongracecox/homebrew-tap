@@ -35,6 +35,9 @@ jobs:
           mkdir -p "$taps"
           rm -rf "$taps/homebrew-tap"
           ln -s "$GITHUB_WORKSPACE" "$taps/homebrew-tap"
+          # Homebrew refuses to load formulae from a third-party tap until
+          # it is trusted; a symlinked tap never goes through `brew tap`.
+          brew trust "$TAP"
 
       - name: Update formula
         id: bump
